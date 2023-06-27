@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat with Friend</title>
+  <style>
+    /* Some basic CSS for the chat interface */
+    #chatbox {
+      height: 300px;
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+<body>
+  <div id="chatbox"></div>
+  <input type="text" id="messageInput" />
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    // Get the user's name from the URL parameter
+    var urlParams = new URLSearchParams(window.location.search);
+    var username = urlParams.get('user');
+
+    // Display the username in the chatbox
+    var chatbox = document.getElementById('chatbox');
+    chatbox.innerHTML += '<p>You are chatting with: ' + username + '</p>';
+
+    function sendMessage() {
+      var messageInput = document.getElementById('messageInput');
+      var message = messageInput.value;
+
+      // Display the message in the chatbox
+      chatbox.innerHTML += '<p><strong>' + username + ':</strong> ' + message + '</p>';
+
+      // Clear the input field
+      messageInput.value = '';
+    }
+  </script>
+</body>
+</html>
